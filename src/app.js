@@ -1,3 +1,3 @@
 import 'bootstrap';
 import './scss/main.scss';
-import './loading_components'
+import './js/loading_components'
