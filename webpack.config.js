@@ -2,6 +2,8 @@ const path = require("path");
 const MiniCssExtracPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const CopyPlugin = require('copy-webpack-plugin');
+
 const metaTags = {
   viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
 } 
@@ -55,6 +57,14 @@ module.exports = {
     }),
     new MiniCssExtracPlugin({
       filename: "css/[name].css",
-    })
+    }),
+    new CopyPlugin({
+      patterns: [
+        { from: './src/assets/images', to: 'assets/images' },
+      ],
+      options: {
+        concurrency: 100,
+      },
+    }),
   ],
 };
