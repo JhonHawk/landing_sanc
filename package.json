@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode development -w",
     "build-dev": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,6 +21,7 @@
     "autoprefixer": "^9.8.5",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^4.0.0",
+    "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
@@ -28,6 +29,7 @@
     "sass-loader": "^9.0.2",
     "style-loader": "^1.2.1",
     "webpack": "^4.44.0",
+    "webpack-cdn-plugin": "^3.3.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   }

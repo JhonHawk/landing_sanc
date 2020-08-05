@@ -2,11 +2,11 @@ const path = require("path");
 const MiniCssExtracPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 const metaTags = {
-  viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
-} 
+  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+};
 
 module.exports = {
   entry: "./src/app.js",
@@ -20,7 +20,7 @@ module.exports = {
         test: /\.(scss)$/,
         use: [
           {
-            loader: MiniCssExtracPlugin.loader
+            loader: MiniCssExtracPlugin.loader,
           },
           {
             // Interprets `@import` and `url()` like `import/require()` and will resolve them
@@ -41,18 +41,30 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+              outputPath: "fonts/",
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Home',
-      template: './src/index.html',
-      meta: metaTags
+      title: "Home",
+      template: "./src/index.html",
+      meta: metaTags,
     }),
     new HtmlWebpackPlugin({
-      filename: 'pages/test.html',
-      title: 'test',
-      template: './src/pages/test.html',
+      filename: "pages/test.html",
+      title: "test",
+      template: "./src/pages/test.html",
       meta: metaTags,
     }),
     new MiniCssExtracPlugin({
@@ -60,7 +72,8 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: './src/assets/images', to: 'assets/images' },
+        { from: "./src/assets/images", to: "assets/images" },
+        { from: "./src/assets/video", to: "assets/video" },
       ],
       options: {
         concurrency: 100,
